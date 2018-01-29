@@ -1,0 +1,8 @@
+{
+  "name": "angular-selectize2",
+  "version": "4.0.0",
+  "dependencies": {
+    "selectize": ">=0.12.1",
+    "angular": "^1.6.8"
+  }
+}

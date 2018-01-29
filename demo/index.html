@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html ng-app="Main">
+  <head>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700" />
+    <link rel="stylesheet" href="../bower_components/selectize/dist/css/selectize.css" />
+    <link rel="stylesheet" href="app.css" />
+
+    <script src="../bower_components/jquery/dist/jquery.min.js" type="text/javascript"></script>
+    <script src="../bower_components/angular/angular.js" type="text/javascript"></script>
+    <script src="../bower_components/microplugin/src/microplugin.js" type="text/javascript"></script>
+    <script src="../bower_components/sifter/sifter.min.js" type="text/javascript"></script>
+    <script src="../bower_components/selectize/dist/js/selectize.js" type="text/javascript"></script>
+    <script src="../dist/angular-selectize.js" type="text/javascript"></script>
+    <script src="app.js"></script>
+  </head>
+  <body ng-controller="MainCtrl">
+
+    <form name='myForm'>
+      <h2 class='header'>Angular Form Bindings</h2>
+      <selectize placeholder='Pick some things...' options='myOptions' name='myName' config="myConfig" ng-model="myModel" ng-disabled='disable' required='true'></selectize>
+
+      <br>This second input shares the model and options of the first
+      <selectize placeholder='Pick some things...' options='myOptions' config="myConfig" ng-model="myModel" ng-disabled='disable' required='true'></selectize>
+
+      <br>
+      <input type='checkbox' ng-model='disable'>Disable
+      <button ng-click='changeOptions()'>Change Options</button>
+      <button ng-click='changeValue()'>Change Value</button>
+      <p>
+        <b>ngModel:</b>
+        <pre>{{myModel |json}}</pre>
+        <br>
+        <b>myForm.myName.$error:</b>
+        <pre>{{ myForm.myName.$error | json }}</pre>
+        <b>myForm.$dirty:</b>
+        <pre>{{myForm.$dirty | json}}</pre>
+        <b>Async option loading:</b>
+        <pre>{{myOptions | json}}</pre>
+      </p>
+    </form>
+
+
+    <h2 class='header'>Single select</h2>
+    <selectize placeholder='Pick some things...' options='myOptions' config="{maxItems: 1}" ng-model="myModel2" ng-disabled='disable' required='true'></selectize>
+    <p>
+      <b>ngModel2:</b>
+      <pre>{{myModel2 |json}}</pre>
+    </p>
+
+
+    <h2 class='header'>Optgroups</h2>
+    <selectize placeholder='Pick some things...' options='myOptions2' config="myConfig2" ng-model="myModel3" ng-disabled='disable' required='true'></selectize>
+    <p>
+      <b>ngModel3:</b>
+      <pre>{{myModel3 |json}}</pre>
+    </p>
+    <p>
+      <b>myConfig2:</b>
+      <pre>{{myConfig2 |json}}</pre>
+    </p>
+    <button ng-click='changeConfig()'>Change Config</button>
+
+    <div style='margin-bottom: 500px'></div>
+
+
+  </body>
+</html>
