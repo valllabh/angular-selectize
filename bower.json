@@ -1,5 +1,5 @@
 {
-  "name": "angular-selectize2",
+  "name": "angular-selectize",
   "version": "4.0.0",
   "dependencies": {
     "selectize": ">=0.12.1",
