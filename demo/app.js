@@ -41,7 +41,7 @@ angular.module('Main', ['selectize'])
   //Optgroups
   //=======================================================
   $scope.myConfig2 = {
-    maxItems: 1,
+    // maxItems: 1,
     optgroupField: 'class',
   	labelField: 'name',
   	valueField: 'value',
@@ -58,6 +58,9 @@ angular.module('Main', ['selectize'])
   	]
   };
 
+// setTimeout(function(){
+//   $scope.myModel3 = ['horse','cat'];
+// }, 1000)
 
   $scope.changeConfig = function(){
     $scope.myConfig2.labelField = 'class';
