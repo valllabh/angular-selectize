@@ -13,7 +13,7 @@ angular.module('Main', ['selectize'])
 
 
   $scope.changeOptions = function(){
-    $scope.myOptions = [{value: '1', text: 'Kirk'}];
+    $scope.myOptions.push({value: '3', text: 'Kirk'});
   }
 
   $scope.changeValue = function(){
@@ -22,9 +22,9 @@ angular.module('Main', ['selectize'])
 
   $scope.myConfig = {
     create: true,
-    labelField: 'name',
+    labelField: 'text',
     onChange: function(value){
-      console.log('onChange', value)
+      console.log('onChange Event', value)
     },
     // maxItems: 1,
     // required: true,
@@ -58,12 +58,12 @@ angular.module('Main', ['selectize'])
   	]
   };
 
-// setTimeout(function(){
-//   $scope.myModel3 = ['horse','cat'];
-// }, 1000)
+  setTimeout(function(){
+    $scope.myModel3 = ['horse','cat'];
+  }, 1000)
 
-  $scope.changeConfig = function(){
-    $scope.myConfig2.labelField = 'class';
+  $scope.toggleLabel = function(){
+    $scope.myConfig2.labelField = $scope.myConfig2.labelField == 'class' ? 'name' : 'class';
   }
 
   $scope.myOptions2 = [

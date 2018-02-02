@@ -15,6 +15,15 @@
   </head>
   <body ng-controller="MainCtrl">
 
+
+    <h2 class='header'>Optgroups</h2>
+    <selectize placeholder='Pick some things...' options='myOptions2' config="myConfig2" ng-model="myModel3" ng-disabled='disable' required='true'></selectize>
+    <p>
+      <b>ngModel3:</b>
+      <pre>{{myModel3}}</pre>
+    </p>
+    <button ng-click='toggleLabel()'>Toggle Label</button>
+
     <form name='myForm'>
       <h2 class='header'>Angular Form Bindings</h2>
       <selectize placeholder='Pick some things...' options='myOptions' name='myName' config="myConfig" ng-model="myModel" ng-disabled='disable' required='true'></selectize>
@@ -23,7 +32,7 @@
       <selectize placeholder='Pick some things...' options='myOptions' config="myConfig" ng-model="myModel" ng-disabled='disable' required='true'></selectize>
 
       <br>
-      <input type='checkbox' ng-model='disable'>Disable
+      <label><input type='checkbox' ng-model='disable'> Disable</label>
       <button ng-click='changeOptions()'>Change Options</button>
       <button ng-click='changeValue()'>Change Value</button>
       <p>
@@ -48,13 +57,7 @@
     </p>
 
 
-    <h2 class='header'>Optgroups</h2>
-    <selectize placeholder='Pick some things...' options='myOptions2' config="myConfig2" ng-model="myModel3" ng-disabled='disable' required='true'></selectize>
-    <p>
-      <b>ngModel3:</b>
-      <pre>{{myModel3}}</pre>
-    </p>
-    <button ng-click='changeConfig()'>Change Config</button>
+
 
     <div style='margin-bottom: 500px'></div>
 
