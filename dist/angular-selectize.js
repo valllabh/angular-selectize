@@ -32,7 +32,9 @@ angular.module('selectize', []).directive("selectize", [function() {
             return;
           }
           ngs.selectize.clearOptions();
-          ngs.selectize.addOption(options);
+          if(options){
+            ngs.selectize.addOption(options);
+          }
         };
 
         ngs.onChange = function(){
