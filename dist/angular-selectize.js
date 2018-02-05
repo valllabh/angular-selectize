@@ -77,7 +77,6 @@ angular.module('selectize', []).directive("selectize", [function() {
           ngs.refreshModel(scope.ngModel);
           ngs.refreshDisable(scope.ngDisabled);
 
-
         };
 
         ngs.refreshDisable = function(disabled){

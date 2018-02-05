@@ -31,12 +31,6 @@ angular.module('Main', ['selectize'])
   }
 
 
-  //simulate async option loading
-  $timeout(function(){
-    $scope.myOptions.push({value: '2', text: 'Crusher'})
-  }, 2000);
-
-
   //=======================================================
   //Optgroups
   //=======================================================
@@ -58,13 +52,51 @@ angular.module('Main', ['selectize'])
   	]
   };
 
-  setTimeout(function(){
-    $scope.myModel3 = ['horse','cat'];
-  }, 1000)
-
   $scope.toggleLabel = function(){
     $scope.myConfig2.labelField = $scope.myConfig2.labelField == 'class' ? 'name' : 'class';
   }
+
+  $scope.myConfig3 = {
+    valueField: 'url',
+    labelField: 'name',
+    searchField: 'name',
+    create: false,
+    preload: true,
+    render: {
+        option: function(item, escape) {
+            return '<div>' +
+                '<span class="title">' +
+                    '<span class="name"><i class="icon ' + (item.fork ? 'fork' : 'source') + '"></i>' + escape(item.name) + '</span> ' +
+                    '<small class="by">' + escape(item.username) + '</small>' +
+                '</span>' +
+            '</div>';
+        }
+    },
+    score: function(search) {
+        var score = this.getScoreFunction(search);
+        return function(item) {
+            return score(item) * (1 + Math.min(item.watchers / 100, 1));
+        };
+    },
+    load: function(query, callback) {
+      query = query || 'default query';
+      $.ajax({
+        url: 'https://api.github.com/legacy/repos/search/' + encodeURIComponent(query),
+        type: 'GET',
+        error: function() {
+          callback();
+        },
+        success: function(res) {
+          $scope.myOptions3 = res.repositories;
+          // console.log(res.repositories);
+          callback(res.repositories);
+          // !$scope.$$phase && $scope.$digest();
+
+        }
+      });
+    }
+  };
+  $scope.myOptions3 = [];
 
   $scope.myOptions2 = [
 		{class: 'mammal', value: "dog", name: "Dog" },
